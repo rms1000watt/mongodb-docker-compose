@@ -1,0 +1,41 @@
+name: mongodb-cluster
+
+services:
+  s1as:
+    command: --config /etc/mongo/mongod.conf
+    image: mongo:7.0.9
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: admin
+    #   MONGO_INITDB_ROOT_PASSWORD: admin
+    #   MONGO_INITDB_DATABASE: mydb
+    ports:
+    - 8000:27018
+    volumes:
+    - ./data/s1as/db:/data/db
+    - ./config/s1.conf:/etc/mongo/mongod.conf
+
+  s1bs:
+    command: --config /etc/mongo/mongod.conf
+    image: mongo:7.0.9
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: admin
+    #   MONGO_INITDB_ROOT_PASSWORD: admin
+    #   MONGO_INITDB_DATABASE: mydb
+    ports:
+    - 8001:27018
+    volumes:
+    - ./data/s1bs/db:/data/db
+    - ./config/s1.conf:/etc/mongo/mongod.conf
+
+  s1cs:
+    command: --config /etc/mongo/mongod.conf
+    image: mongo:7.0.9
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: admin
+    #   MONGO_INITDB_ROOT_PASSWORD: admin
+    #   MONGO_INITDB_DATABASE: mydb
+    ports:
+    - 8002:27018
+    volumes:
+    - ./data/s1cs/db:/data/db
+    - ./config/s1.conf:/etc/mongo/mongod.conf
