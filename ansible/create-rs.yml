@@ -1,9 +1,0 @@
-# ---
-# - name: Ensure replicaset rs0 exists
-#   community.mongodb.mongodb_replicaset:
-#     login_host: localhost
-#     replica_set: rs0
-#     members:
-#     - mongodb1:27017
-#     - mongodb2:27017
-#     - mongodb3:27017
