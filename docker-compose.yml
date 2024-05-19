@@ -1,7 +1,7 @@
 name: mongodb-cluster
 
 services:
-  s1as:
+  rs0as:
     command: --config /etc/mongo/mongod.conf
     image: mongo:7.0.9
     ports:
@@ -9,10 +9,10 @@ services:
     networks:
     - mongo
     volumes:
-    - ./data/s1as/db:/data/db
-    - ./config/s1.conf:/etc/mongo/mongod.conf
+    - ./data/rs0as/db:/data/db
+    - ./config/rs0.conf:/etc/mongo/mongod.conf
 
-  s1bs:
+  rs0bs:
     command: --config /etc/mongo/mongod.conf
     image: mongo:7.0.9
     ports:
@@ -20,10 +20,10 @@ services:
     networks:
     - mongo
     volumes:
-    - ./data/s1bs/db:/data/db
-    - ./config/s1.conf:/etc/mongo/mongod.conf
+    - ./data/rs0bs/db:/data/db
+    - ./config/rs0.conf:/etc/mongo/mongod.conf
 
-  s1cs:
+  rs0cs:
     command: --config /etc/mongo/mongod.conf
     image: mongo:7.0.9
     ports:
@@ -31,8 +31,8 @@ services:
     networks:
     - mongo
     volumes:
-    - ./data/s1cs/db:/data/db
-    - ./config/s1.conf:/etc/mongo/mongod.conf
+    - ./data/rs0cs/db:/data/db
+    - ./config/rs0.conf:/etc/mongo/mongod.conf
 
 networks:
   mongo:
