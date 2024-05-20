@@ -1,9 +1,53 @@
-- name: Ensure replicaset rs0 exists
+- name: Create replicaset rs0
   community.mongodb.mongodb_replicaset:
     login_host: localhost
-    login_port: 8000
+    login_port: 8000 # rs0as
     replica_set: rs0
     members:
-    - rs0as:27018
-    - rs0bs:27018
-    - rs0cs:27018
+    - host: rs0as:27018
+      hidden: false
+      votes: 1
+      priority: 1
+    - host: rs0bs:27018
+      hidden: false
+      votes: 1
+      priority: 1
+    - host: rs0cs:27018
+      hidden: false
+      votes: 1
+      priority: 1
+
+- name: Create replicaset rs1
+  community.mongodb.mongodb_replicaset:
+    login_host: localhost
+    login_port: 8003 # rs1as
+    replica_set: rs1
+    members:
+    - host: rs1as:27018
+      hidden: false
+      votes: 1
+      priority: 1
+    - host: rs1bs:27018
+      hidden: false
+      votes: 1
+      priority: 1
+    - host: rs1cs:27018
+      hidden: false
+      votes: 1
+      priority: 1
+
+- name: Wait for rs0
+  community.mongodb.mongodb_status:
+    login_host: localhost
+    login_port: 8000 # rs0as
+    replica_set: rs0
+    poll: 5
+    interval: 10
+
+- name: Wait for rs1
+  community.mongodb.mongodb_status:
+    login_host: localhost
+    login_port: 8003 # rs1as
+    replica_set: rs1
+    poll: 5
+    interval: 10
