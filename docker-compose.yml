@@ -69,39 +69,39 @@ services:
     - ./data/rs1cs/db:/data/db
     - ./config/rs1.conf:/etc/mongo/mongod.conf
 
-# # config server replica set: cfg
-#   rs1as:
-#     command: --config /etc/mongo/mongod.conf
-#     image: mongo:7.0.9
-#     ports:
-#     - 8003:27018
-#     networks:
-#     - mongo
-#     volumes:
-#     - ./data/rs1as/db:/data/db
-#     - ./config/rs1.conf:/etc/mongo/mongod.conf
+# config server replica set: cfg
+  cfga:
+    command: --config /etc/mongo/mongod.conf
+    image: mongo:7.0.9
+    ports:
+    - 8006:27019
+    networks:
+    - mongo
+    volumes:
+    - ./data/cfga/db:/data/db
+    - ./config/cfg.conf:/etc/mongo/mongod.conf
 
-#   rs1bs:
-#     command: --config /etc/mongo/mongod.conf
-#     image: mongo:7.0.9
-#     ports:
-#     - 8004:27018
-#     networks:
-#     - mongo
-#     volumes:
-#     - ./data/rs1bs/db:/data/db
-#     - ./config/rs1.conf:/etc/mongo/mongod.conf
+  cfgb:
+    command: --config /etc/mongo/mongod.conf
+    image: mongo:7.0.9
+    ports:
+    - 8007:27019
+    networks:
+    - mongo
+    volumes:
+    - ./data/cfgb/db:/data/db
+    - ./config/cfg.conf:/etc/mongo/mongod.conf
 
-#   rs1cs:
-#     command: --config /etc/mongo/mongod.conf
-#     image: mongo:7.0.9
-#     ports:
-#     - 8005:27018
-#     networks:
-#     - mongo
-#     volumes:
-#     - ./data/rs1cs/db:/data/db
-#     - ./config/rs1.conf:/etc/mongo/mongod.conf
+  cfgc:
+    command: --config /etc/mongo/mongod.conf
+    image: mongo:7.0.9
+    ports:
+    - 8008:27019
+    networks:
+    - mongo
+    volumes:
+    - ./data/cfgc/db:/data/db
+    - ./config/cfg.conf:/etc/mongo/mongod.conf
 
 networks:
   mongo:

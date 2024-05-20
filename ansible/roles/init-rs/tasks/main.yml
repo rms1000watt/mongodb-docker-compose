@@ -36,6 +36,25 @@
       votes: 1
       priority: 1
 
+- name: Create replicaset cfg
+  community.mongodb.mongodb_replicaset:
+    login_host: localhost
+    login_port: 8006 # cfg
+    replica_set: cfg
+    members:
+    - host: cfga:27019
+      hidden: false
+      votes: 1
+      priority: 1
+    - host: cfgb:27019
+      hidden: false
+      votes: 1
+      priority: 1
+    - host: cfgc:27019
+      hidden: false
+      votes: 1
+      priority: 1
+
 - name: Wait for rs0
   community.mongodb.mongodb_status:
     login_host: localhost
@@ -49,5 +68,13 @@
     login_host: localhost
     login_port: 8003 # rs1as
     replica_set: rs1
+    poll: 5
+    interval: 10
+
+- name: Wait for cfg
+  community.mongodb.mongodb_status:
+    login_host: localhost
+    login_port: 8006 # cfga
+    replica_set: cfg
     poll: 5
     interval: 10
