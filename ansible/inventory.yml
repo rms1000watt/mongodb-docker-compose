@@ -1,7 +1,0 @@
-# plugin: community.docker.docker_containers
-
-# s1:
-#   hosts:
-#     s1as:
-#     s1bs:
-#     s1cs:

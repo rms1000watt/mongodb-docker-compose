@@ -11,16 +11,14 @@ MongoDB cluster in Docker Compose
 ## Usage
 
 ```bash
+docker ps -a | cut -d' ' -f1 | grep -v CONTAINER | xargs docker stop -t 1 | xargs docker rm
 rm -rf ./data ||:
 docker-compose up -d
 
-# ansible-playbook -i ansible/inventory.yml ansible/new-cluster.yml
-ansible-galaxy collection install mongodb.mongodb_replicaset # TODO wtf?
-ansible-playbook ansible/new-cluster.yml
-
-# docker run -it --rm --network mongo mongo mongosh s1as:27018
-# # rs.initiate()
-# # TODO: ansible? or figure out proper config
+ansible-galaxy collection install community.mongodb
+python3 -m pip install pymongo
+ansible-playbook ansible/new-cluster.yml -e "ansible_python_interpreter=$HOME/.asdf/shims/python3"
 
 docker-compose down -t 1
+docker ps -a | cut -d' ' -f1 | grep -v CONTAINER | xargs docker stop -t 1 | xargs docker rm
 ```

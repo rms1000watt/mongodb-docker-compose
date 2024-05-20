@@ -1,9 +1,9 @@
-- name: Ensure replicaset s1 exists
+- name: Ensure replicaset rs0 exists
   community.mongodb.mongodb_replicaset:
     login_host: localhost
     login_port: 8000
     replica_set: rs0
     members:
-    - s1as:27018
-    - s1as:27018
-    - s1as:27018
+    - rs0as:27018
+    - rs0bs:27018
+    - rs0cs:27018
