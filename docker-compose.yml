@@ -103,6 +103,18 @@ services:
     - ./data/cfgc/db:/data/db
     - ./config/cfg.conf:/etc/mongo/mongod.conf
 
+  # mongos query router
+    mongos:
+      command: mongos --config /etc/mongo/mongos.conf
+      image: mongo:7.0.9
+      ports:
+      - 27018:27018
+      networks:
+      - mongo
+      volumes:
+      - ./data/mongos/db:/data/db
+      - ./config/mongos.conf:/etc/mongo/mongos.conf
+
 networks:
   mongo:
     name: mongo
