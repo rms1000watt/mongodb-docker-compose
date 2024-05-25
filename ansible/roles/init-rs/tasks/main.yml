@@ -78,3 +78,17 @@
     replica_set: cfg
     poll: 5
     interval: 10
+
+- name: Add shard on rs0
+  community.mongodb.mongodb_shard:
+    login_host: localhost
+    login_port: 27017 # mongos
+    shard: "rs0/rs0as:27018,rs0bs:27018,rs0cs:27018"
+    state: present
+
+- name: Add shard on rs1
+  community.mongodb.mongodb_shard:
+    login_host: localhost
+    login_port: 27017 # mongos
+    shard: "rs1/rs1as:27018,rs1bs:27018,rs1cs:27018"
+    state: present

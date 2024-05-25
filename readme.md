@@ -28,6 +28,9 @@ docker run -it --rm --network mongo mongo mongosh rs1as:27018
 # Connect to cfga
 docker run -it --rm --network mongo mongo mongosh cfga:27019
 
+# Connect to mongos
+docker run -it --rm --network mongo mongo mongosh mongos:27017
+
 # use mydb;
 # db.createCollection("mycol");
 # sh.shardCollection("db.mycol", { _id: "hashed" });
